@@ -56,7 +56,7 @@ class TasksTableViewController : UITableViewController {
                 strongSelf.navigationController?.pushViewController(taskDetailsVC, animated: true)
                 
                 
-            }).addDisposableTo(disposeBag)
+            }).disposed(by: disposeBag)
 
     }
     
@@ -67,7 +67,7 @@ class TasksTableViewController : UITableViewController {
                 
                 cell.textLabel?.text = element.title
                 
-            }.addDisposableTo(disposeBag)
+        }.disposed(by: disposeBag)
         
         // just adding an item for demoing purposes!
         tasks.value.append(Task(title: "Feed the dog"))
@@ -91,11 +91,11 @@ class TasksTableViewController : UITableViewController {
                     self?.tasks.value.append(task)
                     taskDetailsVC.dismiss(animated: true, completion: nil)
                     
-                }).addDisposableTo(strongSelf.disposeBag)
+                }).disposed(by: strongSelf.disposeBag)
                 
                 strongSelf.present(taskDetailsVC, animated: true, completion: nil)
 
-            }.addDisposableTo(disposeBag)
+        }.disposed(by: disposeBag)
     }
     
 }
